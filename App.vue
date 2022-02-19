@@ -2,6 +2,8 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
     <HelloWorld msg="Hello Vue 2 + Vite" />
+    <br/>
+    API supported: <a href="/api">/api</a>
   </div>
 </template>
 
