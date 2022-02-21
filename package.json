@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "express": "^4.17.3",
-    "express-start": "^0.3.0",
+    "get-port-please": "^2.3.0",
     "http-proxy-middleware": "^2.0.3",
     "listhen": "^0.2.6",
     "vite-plugin-vue2": "^1.9.3",

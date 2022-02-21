@@ -2,9 +2,7 @@ const { resolve } = require("path");
 const { createServer: createViteDevServer } = require("vite");
 const express = require("express");
 const { createProxyMiddleware } = require("http-proxy-middleware");
-const { findPort } = require("express-start/find-port");
-
-const PORT = process.env.PORT || 8080;
+const { getPort } = require("get-port-please");
 
 const server = createServer();
 
@@ -26,17 +24,18 @@ function createServer() {
 }
 
 async function createDevServer() {
+  const PORT = process.env.PORT || 8080;
   const [ devServer, port ] = await Promise.all([
     createViteDevServer(),
-    findPort(PORT + 1),
+    getPort({ port: PORT + 1 }),
   ]);
+  
   const address = `http://localhost:${port}`;
-  await devServer.listen(port, function () {
-    console.log();
-    console.log(`Vite dev server running at:`);
-    console.log(address);
-    console.log();
-  });
+  await devServer.listen(port);
+  console.log();
+  console.log(`Vite dev server running at:`);
+  console.log(address);
+  console.log();
   return address;
 }
 
