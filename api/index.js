@@ -1,8 +1,11 @@
+const express = require("express");
 
+const api = express();
 
-export function handler(req, res, next) {
-  if (req.path === "/api") {
-    return res.end("hello");
-  }
-  next();
-};
+api.use("/", (req, res, next) => {
+  const url = req.url;
+  res.type("application/json");
+  res.send(`Hello, World!`);
+});
+
+module.exports = api;
