@@ -3,7 +3,7 @@ const PRODUCTION = process.env.NODE_ENV === "production";
 
 const server = express();
 
-server.use(PRODUCTION ? productionServer() : devServer());
+server.use(PRODUCTION ? prodServer() : devServer());
  
 function devServer() {
   const { createServer: createViteDevServer } = require("vite");
@@ -18,7 +18,7 @@ function devServer() {
   return server;
 }
 
-function productionServer() {
+function prodServer() {
   const { resolve } = require("path");
   const server = express();
   const distDir = resolve(__dirname, "../dist");
