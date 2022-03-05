@@ -1,6 +1,10 @@
+const config = require("config");
 const express = require("express");
+const { waitUntilResolved, getPort, listen } = require("../util");
+const { connect } = require("./service-registry.js");
 const PRODUCTION = process.env.NODE_ENV === "production";
 
+const { REGISTRY_PORT } = process.env;
 const server = express();
 
 server.use(PRODUCTION ? prodServer() : devServer());
@@ -26,11 +30,12 @@ function prodServer() {
   return server;
 }
 
-function waitUntilResolved(promise) {
-  return async function (req, res, next) {
-    await promise;
-    next();
-  };
-}
-
 module.exports = server;
+
+(async function main() {
+  const registry = connect(REGISTRY_PORT);
+  const port = await getPort(config.get("ui.port"));
+  const { url } = await listen(server, port);
+  console.log(`Codebin UI server running: ${url}`);
+  registry.register("ui", { port });
+})();

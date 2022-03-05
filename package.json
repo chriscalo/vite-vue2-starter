@@ -6,6 +6,7 @@
     "build": "vite build"
   },
   "dependencies": {
+    "2-thenable": "^1.0.0",
     "commander": "^9.0.0",
     "config": "^3.3.7",
     "express": "^4.17.3",
