@@ -1,10 +1,10 @@
 import { defineConfig } from "vite";
 import { createVuePlugin } from "vite-plugin-vue2";
-import { disableHistoryFallback } from "./plugins/disable-history-fallback.js";
+import { removeHistoryFallback } from "./plugins/remove-history-fallback.js";
 
 export default defineConfig({
   plugins: [
     createVuePlugin(),
-    disableHistoryFallback(),
+    removeHistoryFallback(),
   ],
 });

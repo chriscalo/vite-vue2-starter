@@ -9,6 +9,6 @@ const { REGISTRY_PORT } = process.env;
   const registry = connect(REGISTRY_PORT);
   const port = await getPort(config.get("api.port"));
   const { url } = await listen(api, port);
-  console.log(`Codebin API server running: ${url}`);
+  console.log(`Application API server running: ${url}`);
   registry.register("api", { port });
 })();

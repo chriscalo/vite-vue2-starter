@@ -36,6 +36,6 @@ module.exports = server;
   const registry = connect(REGISTRY_PORT);
   const port = await getPort(config.get("ui.port"));
   const { url } = await listen(server, port);
-  console.log(`Codebin UI server running: ${url}`);
+  console.log(`Application UI server running: ${url}`);
   registry.register("ui", { port });
 })();
