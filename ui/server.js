@@ -1,10 +1,10 @@
 const config = require("config");
 const express = require("express");
 const { waitUntilResolved, getPort, listen } = require("../util");
-const { connect } = require("./service-registry.js");
+const { connect } = require("../server/service-registry.js");
 const PRODUCTION = process.env.NODE_ENV === "production";
 
-const { REGISTRY_PORT } = process.env;
+const { REGISTRY_PORT = 9090 } = process.env;
 const server = express();
 
 server.use(PRODUCTION ? prodServer() : devServer());

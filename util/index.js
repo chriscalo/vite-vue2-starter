@@ -1,6 +1,7 @@
 const { spawn } = require("child_process");
 const toThenable = require("2-thenable");
 const portfinder = require("portfinder");
+const killPort_ = require("kill-port");
 
 const PRODUCTION = process.env.NODE_ENV === "production";
 const DEVELOPMENT = !PRODUCTION;
@@ -75,7 +76,7 @@ async function listen(app, port) {
 }
 
 async function killPort(port) {
-  return run("$(npm bin)/kill-port", [port], { shell: true });
+  return killPort_(port);
 }
 
 module.exports = {
