@@ -10,6 +10,10 @@ function run(command, args = [], options = {}) {
   let stdout = "";
   let stderr = "";
   
+  if (typeof args === "string") {
+    args = args.split(" ");
+  }
+  
   const child = spawn(command, args, {
     stdio: ["pipe", "pipe", "pipe"],
     env: {

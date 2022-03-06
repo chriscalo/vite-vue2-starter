@@ -5,7 +5,9 @@
     "start": "node server/start.js"
   },
   "workspaces": [
-    "ui"
+    "api",
+    "ui",
+    "foo"
   ],
   "dependencies": {
     "2-thenable": "^1.0.0",
@@ -14,7 +16,8 @@
     "express": "^4.17.3",
     "http-proxy-middleware": "^2.0.3",
     "portfinder": "^1.0.28",
-    "seaport": "^2.0.9"
+    "seaport": "^2.0.9",
+    "~": "file:."
   },
   "devDependencies": {
     "kill-port": "^1.6.1",
