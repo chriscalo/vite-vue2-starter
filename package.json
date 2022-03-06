@@ -6,8 +6,7 @@
   },
   "workspaces": [
     "api",
-    "ui",
-    "foo"
+    "ui"
   ],
   "dependencies": {
     "2-thenable": "^1.0.0",
