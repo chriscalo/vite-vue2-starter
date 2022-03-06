@@ -27,13 +27,13 @@ const API_CWD = resolve(__dirname, "../api");
 async function development() {
   run("npx", "nodemon server/proxy.js --ignore api/ --ignore ui/");
   run("npm", "start --workspace=ui");
-  run("npx", "nodemon server.js", { cwd: API_CWD });
+  run("npm", "start --workspace=api");
 }
 
 async function production() {
   run("npx", "node server/proxy.js");
   run("npm", "start --workspace=ui");
-  run("npx", "node server.js", { cwd: API_CWD });
+  run("npm", "start --workspace=api");
 }
 
 program.parse();

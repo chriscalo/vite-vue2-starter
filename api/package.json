@@ -1,7 +1,7 @@
 {
   "name": "api",
   "scripts": {
-    "start": "node server.js"
+    "start": "node start.js"
   },
   "dependencies": {
     "config": "^3.3.7",
