@@ -1,7 +1,7 @@
 const config = require("config");
 const express = require("express");
 const { createProxyMiddleware } = require("http-proxy-middleware");
-const { waitUntilResolved, listen } = require("../util");
+const { waitUntilResolved, listen } = require("~/util");
 const { connect } = require("./service-registry.js");
 
 const { REGISTRY_PORT } = process.env;

@@ -2,7 +2,7 @@
 const config = require("config");
 const { resolve } = require("path");
 const { program } = require("commander");
-const { run } = require("../util");
+const { run } = require("~/util");
 const registry = require("./service-registry");
 
 const PRODUCTION = process.env.NODE_ENV === "production";
