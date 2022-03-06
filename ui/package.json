@@ -5,6 +5,7 @@
     "build": "vite build"
   },
   "dependencies": {
+    "express": "^4.17.3",
     "vite-plugin-vue2": "^1.9.3",
     "vue": "^2.6.14"
   },
