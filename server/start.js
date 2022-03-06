@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 const config = require("config");
-const { resolve } = require("path");
 const { program } = require("commander");
 const { run } = require("~/util");
 const registry = require("./service-registry");
@@ -21,8 +20,6 @@ program.action(async function () {
     production();
   }
 });
-
-const API_CWD = resolve(__dirname, "../api");
 
 async function development() {
   run("npx", "nodemon server/proxy.js --ignore api/ --ignore ui/");
