@@ -22,18 +22,17 @@ program.action(async function () {
   }
 });
 
-const UI_CWD = resolve(__dirname, "../ui");
 const API_CWD = resolve(__dirname, "../api");
 
 async function development() {
   run("npx", "nodemon server/proxy.js --ignore api/ --ignore ui/");
-  run("npx", "node server.js", { cwd: UI_CWD });
+  run("npm", "start --workspace=ui");
   run("npx", "nodemon server.js", { cwd: API_CWD });
 }
 
 async function production() {
   run("npx", "node server/proxy.js");
-  run("npx", "node server.js", { cwd: UI_CWD });
+  run("npm", "start --workspace=ui");
   run("npx", "node server.js", { cwd: API_CWD });
 }
 
