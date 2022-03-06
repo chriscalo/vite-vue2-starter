@@ -24,18 +24,13 @@ program.action(async function () {
 async function development() {
   run("npx", ["nodemon", "server/proxy.js"]);
   run("npx", ["node", "server/ui.js"]);
-  run("npx", [
-    "nodemon",
-    "server/api.js",
-    "--watch", "api",
-    "--watch", "server/api.js",
-  ]);
+  run("npx", ["nodemon", "api/server.js", "--watch", "api" ]);
 }
 
 async function production() {
   run("npx", ["node", "server/proxy.js"]);
   run("npx", ["node", "server/ui.js"]);
-  run("npx", ["node", "server/api.js"]);
+  run("npx", ["node", "api/server.js"]);
 }
 
 program.parse();

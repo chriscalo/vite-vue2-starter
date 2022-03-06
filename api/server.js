@@ -1,7 +1,7 @@
 const config = require("config");
-const api = require("../api");
+const api = require("./index.js");
 const { getPort, listen } = require("../util");
-const { connect } = require("./service-registry.js");
+const { connect } = require("../server/service-registry.js");
 
 const { REGISTRY_PORT } = process.env;
 
