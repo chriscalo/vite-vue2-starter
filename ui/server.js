@@ -25,7 +25,7 @@ function devServer() {
 function prodServer() {
   const { resolve } = require("path");
   const server = express();
-  const distDir = resolve(__dirname, "../dist");
+  const distDir = resolve(__dirname, "./dist");
   server.use(express.static(distDir));
   return server;
 }
