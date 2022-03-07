@@ -1,5 +1,5 @@
 const express = require("express");
-const {foo} = require("~/foo");
+const { foo } = require("~/foo");
 
 const api = express();
 
