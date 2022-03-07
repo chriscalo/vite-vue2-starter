@@ -6,8 +6,4 @@ module.exports = {
     port: 9090,
   },
   
-  server: {
-    port: process.env.PORT || 8080,
-  },
-  
 };
