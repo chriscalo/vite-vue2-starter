@@ -1,6 +1,6 @@
 const config = require("config");
 const express = require("express");
-const { createProxyMiddleware } = require("http-proxy-middleware");
+const proxy = require("express-http-proxy");
 const {
   waitUntilResolved,
   listen,
@@ -46,10 +46,9 @@ function apiProxyMiddleware() {
   
   (async function () {
     const [ { port } ] = await apiService;
-    const proxyMiddleware = createProxyMiddleware("/api", {
-      target: `http://localhost:${port}`,
-      pathRewrite: {
-        "/api": "/",
+    const proxyMiddleware = proxy(`localhost:${port}`, {
+      skipToNextHandlerFilter(proxyRes) {
+        return proxyRes.statusCode === 404;
       },
     });
     middleware.use(proxyMiddleware);
@@ -64,8 +63,10 @@ function uiProxyMiddleware() {
   
   (async function () {
     const [ { port } ] = await uiService;
-    const proxyMiddleware = createProxyMiddleware({
-      target: `http://localhost:${port}`,
+    const proxyMiddleware = proxy(`localhost:${port}`, {
+      skipToNextHandlerFilter(proxyRes) {
+        return proxyRes.statusCode === 404;
+      },
       ws: true,
     });
     middleware.use(proxyMiddleware);
