@@ -1,5 +1,4 @@
 const express = require("express");
-const {foo} = require("~/foo");
 
 const api = express();
 
@@ -9,7 +8,7 @@ api.get("/", (req, res, next) => {
 });
 
 api.get("/foo", (req, res, next) => {
-  res.send(foo());
+  res.send("foo");
 });
 
 module.exports = api;
