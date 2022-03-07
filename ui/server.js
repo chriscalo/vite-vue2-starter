@@ -1,5 +1,6 @@
 const config = require("config");
 const express = require("express");
+const nocache = require("nocache");
 const {
   waitUntilResolved,
   getPort,
@@ -16,6 +17,8 @@ server.use(PRODUCTION ? prodServer() : devServer());
 function devServer() {
   const { createServer: createViteDevServer } = require("vite");
   const server = express();
+  server.use(nocache());
+  
   const vitePromise = createViteDevServer({
     server: { middlewareMode: "html" },
   });

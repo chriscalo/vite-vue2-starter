@@ -5,6 +5,7 @@
   },
   "dependencies": {
     "config": "^3.3.7",
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "nocache": "^3.0.1"
   }
 }
