@@ -1,0 +1,11 @@
+{
+  "name": "proxy",
+  "scripts": {
+    "start": "node start.js"
+  },
+  "dependencies": {
+    "config": "^3.3.7",
+    "express": "^4.17.3",
+    "http-proxy-middleware": "^2.0.3"
+  }
+}

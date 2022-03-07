@@ -6,7 +6,8 @@
   },
   "workspaces": [
     "api",
-    "ui"
+    "ui",
+    "proxy"
   ],
   "dependencies": {
     "~": "file:.",

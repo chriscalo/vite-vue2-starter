@@ -2,6 +2,7 @@ const { spawn } = require("child_process");
 const toThenable = require("2-thenable");
 const portfinder = require("portfinder");
 const killPort_ = require("kill-port");
+const registry = require("./service-registry.js");
 
 const PRODUCTION = process.env.NODE_ENV === "production";
 const DEVELOPMENT = !PRODUCTION;
@@ -89,4 +90,5 @@ module.exports = {
   listen,
   killPort,
   run,
+  registry,
 };

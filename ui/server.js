@@ -1,7 +1,11 @@
 const config = require("config");
 const express = require("express");
-const { waitUntilResolved, getPort, listen } = require("~/util");
-const { connect } = require("~/server/service-registry.js");
+const {
+  waitUntilResolved,
+  getPort,
+  listen,
+  registry: { connect },
+} = require("~/util");
 const PRODUCTION = process.env.NODE_ENV === "production";
 
 const { REGISTRY_PORT = 9090 } = process.env;

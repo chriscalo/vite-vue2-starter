@@ -7,7 +7,7 @@ const {
   registry: { connect },
 } = require("~/util");
 
-const { REGISTRY_PORT } = process.env;
+const { REGISTRY_PORT = 9090 } = process.env;
 
 const registry = connect(REGISTRY_PORT);
 const server = express();
@@ -20,7 +20,7 @@ server.use("/api", apiProxyMiddleware());
 server.use(uiProxyMiddleware());
 
 (async function main() {
-  const port = config.get("server.port");
+  const port = config.get("proxy.port");
   const { url } = await listen(server, port);
   console.log(`Application server running: ${url}`);
 })();
