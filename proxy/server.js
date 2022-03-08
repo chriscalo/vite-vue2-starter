@@ -23,6 +23,7 @@ server.use(uiProxyMiddleware());
 (async function main() {
   const port = await getPort(config.get("proxy.port"));
   const { url } = await listen(server, port);
+  // TODO: COLOR
   console.log(`Application server running: ${url}`);
 })();
 
