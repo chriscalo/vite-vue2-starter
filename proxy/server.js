@@ -1,6 +1,7 @@
 const config = require("config");
 const express = require("express");
 const proxy = require("express-http-proxy");
+const chalk = require("chalk");
 const {
   getPort,
   waitUntilResolved,
@@ -23,8 +24,10 @@ server.use(uiProxyMiddleware());
 (async function main() {
   const port = await getPort(config.get("proxy.port"));
   const { url } = await listen(server, port);
-  // TODO: COLOR
-  console.log(`Application server running: ${url}`);
+  console.log(
+    chalk`${ chalk.bold.inverse.green(" Application ") } server running:`,
+    chalk.green.bold(url),
+  );
 })();
 
 function loggingMiddleware() {
