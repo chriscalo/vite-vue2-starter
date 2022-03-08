@@ -2,6 +2,7 @@ const config = require("config");
 const express = require("express");
 const proxy = require("express-http-proxy");
 const {
+  getPort,
   waitUntilResolved,
   listen,
   registry: { connect },
@@ -20,7 +21,7 @@ server.use("/api", apiProxyMiddleware());
 server.use(uiProxyMiddleware());
 
 (async function main() {
-  const port = config.get("proxy.port");
+  const port = await getPort(config.get("proxy.port"));
   const { url } = await listen(server, port);
   console.log(`Application server running: ${url}`);
 })();
