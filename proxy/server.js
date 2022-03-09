@@ -14,12 +14,11 @@ const { REGISTRY_PORT = 9090 } = process.env;
 const registry = connect(REGISTRY_PORT);
 const server = express();
 
-const apiService = registry.get("api");
 const uiService = registry.get("ui");
 
 server.use(loggingMiddleware());
-server.use("/api", apiProxyMiddleware());
 server.use(uiProxyMiddleware());
+server.use("/api", apiMiddleware());
 
 (async function main() {
   const port = await getPort(config.get("proxy.port"));
@@ -45,21 +44,9 @@ function loggingMiddleware() {
   };
 }
 
-function apiProxyMiddleware() {
-  const middleware = express();
-  middleware.use(waitUntilResolved(apiService));
-  
-  (async function () {
-    const [ { port } ] = await apiService;
-    const proxyMiddleware = proxy(`localhost:${port}`, {
-      skipToNextHandlerFilter(proxyRes) {
-        return proxyRes.statusCode === 404;
-      },
-    });
-    middleware.use(proxyMiddleware);
-  })();
-  
-  return middleware;
+function apiMiddleware() {
+  const api = require("~/api");
+  return api;
 }
 
 function uiProxyMiddleware() {
